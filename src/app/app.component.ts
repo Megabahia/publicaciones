@@ -37,7 +37,7 @@ export class AppComponent {
           this.imagen = data.imagen;
           this.description = data.descripcion;
           this.titleService.setTitle(this.title);
-          this.meta.updateTag({ name: 'description', content: this.description });
+          this.meta.updateTag({ name: 'og:description', content: this.description });
           this.cambiarFavicon(this.imagen);
           // La llamada a la API solo se realiza si parametro1 está presente
         });
