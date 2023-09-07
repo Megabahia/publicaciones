@@ -20,7 +20,10 @@ const routes: any = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      useHash: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
