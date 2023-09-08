@@ -34,14 +34,14 @@ export class AppComponent {
   ngOnInit() {
     // Obtén los parámetros de consulta
     this._route.queryParams.subscribe((params) => {
-      const {parametro1} = params;
+      const {id} = params;
       console.log('params', params)
 
       // Verifica si el parámetro1 está presente
-      if (parametro1) {
-        console.log('parametro1', parametro1);
+      if (id) {
+        console.log('id', id);
 
-        this._publicaciones.obtenerDatos(parametro1).subscribe((data) => {
+        this._publicaciones.obtenerDatos(id).subscribe((data) => {
           // Maneja los datos recibidos de la API
           console.log(data);
           this.title = data.titulo;
