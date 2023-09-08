@@ -1,7 +1,8 @@
-import {Component, Renderer2} from '@angular/core';
+import {Component, Inject, Renderer2} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {PublicacionesService} from "./publicaciones.service";
 import {Meta, Title} from "@angular/platform-browser";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent {
   title = 'Pagina titulo';
   imagen = '';
   description = 'publicaciones la descripciones';
+  url = '';
 
   constructor(
     private renderer: Renderer2,
@@ -19,11 +21,14 @@ export class AppComponent {
     private titleService: Title,
     private _route: ActivatedRoute,
     private _publicaciones: PublicacionesService,
+    @Inject(DOCUMENT) document: any
   ) {
     // Configurar las etiquetas SEO personalizadas para la página de Producto
     this.titleService.setTitle('Producto - Mi Tienda en Línea');
     this.meta.updateTag({ name: 'description', content: 'Descripción detallada del producto.' });
     this.meta.updateTag({ name: 'keywords', content: 'producto, descripción, detalles' });
+    this.url = document.location.href;
+    console.log(document.location.href);
   }
 
   ngOnInit() {
@@ -65,4 +70,8 @@ export class AppComponent {
     }
   }
 
+  compartirEnFacebook() {
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.url)}`;
+    window.open(facebookShareUrl, '_blank');
+  }
 }
