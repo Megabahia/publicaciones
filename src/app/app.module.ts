@@ -4,14 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "./app.routing.module";
 
-const routes: any = [
-  {path: '', redirectTo: 'inicio', pathMatch: 'full'},
-  {
-    path: 'inicio',
-    component: AppComponent,
-  },
-]
+
 
 @NgModule({
   declarations: [
@@ -20,10 +15,7 @@ const routes: any = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes, {
-      scrollPositionRestoration: 'enabled',
-      useHash: true,
-    }),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import {Component, Renderer2} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {PublicacionesService} from "./publicaciones.service";
 import {Meta, Title} from "@angular/platform-browser";
 
@@ -17,14 +17,21 @@ export class AppComponent {
     private renderer: Renderer2,
     private meta: Meta,
     private titleService: Title,
-    private route: ActivatedRoute,
+    private _route: ActivatedRoute,
     private _publicaciones: PublicacionesService,
-  ) { }
+  ) {
+    // Configurar las etiquetas SEO personalizadas para la página de Producto
+    this.titleService.setTitle('Producto - Mi Tienda en Línea');
+    this.meta.updateTag({ name: 'description', content: 'Descripción detallada del producto.' });
+    this.meta.updateTag({ name: 'keywords', content: 'producto, descripción, detalles' });
+  }
 
   ngOnInit() {
     // Obtén los parámetros de consulta
-    this.route.queryParams.subscribe((params) => {
-      const parametro1 = params['parametro1'];
+    this._route.queryParams.subscribe((params) => {
+      const parametro1: string = '63f79519b787192f4aafbf8d';
+      const id = params;
+      console.log('id', id)
 
       // Verifica si el parámetro1 está presente
       if (parametro1) {
@@ -37,7 +44,7 @@ export class AppComponent {
           this.imagen = data.imagen;
           this.description = data.descripcion;
           this.titleService.setTitle(this.title);
-          this.meta.updateTag({ name: 'og:description', content: this.description });
+          this.meta.updateTag({ name: 'description', content: this.description });
           this.cambiarFavicon(this.imagen);
           // La llamada a la API solo se realiza si parametro1 está presente
         });
