@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app.routing.module";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 
 
@@ -17,7 +18,9 @@ import {AppRoutingModule} from "./app.routing.module";
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
