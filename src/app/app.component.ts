@@ -34,9 +34,8 @@ export class AppComponent {
   ngOnInit() {
     // Obtén los parámetros de consulta
     this._route.queryParams.subscribe((params) => {
-      const parametro1: string = params['id'];
-      const id = params;
-      console.log('id', id)
+      const {parametro1} = params;
+      console.log('params', params)
 
       // Verifica si el parámetro1 está presente
       if (parametro1) {
