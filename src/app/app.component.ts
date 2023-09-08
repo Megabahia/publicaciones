@@ -27,7 +27,7 @@ export class AppComponent {
     this.titleService.setTitle('Producto - Mi Tienda en Línea');
     this.meta.updateTag({ name: 'description', content: 'Descripción detallada del producto.' });
     this.meta.updateTag({ name: 'keywords', content: 'producto, descripción, detalles' });
-    this.url = document.location.href;
+    this.url = document.location;
     console.log(document.location.href);
   }
 
