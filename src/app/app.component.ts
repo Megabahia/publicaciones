@@ -73,4 +73,26 @@ export class AppComponent {
     const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=Holasssss`;
     window.open(facebookShareUrl, '_blank');
   }
+
+  createPost(accessToken: string) {
+    const post = {
+      message: 'Esta es una publicación personalizada en Facebook creada con Angular',
+      link: 'https://publicaciones-bigpuntos.netlify.app/',
+      image: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.cleverfiles.com%2Fhowto%2Fwp-content%2Fuploads%2F2018%2F03%2Fminion.jpg&tbnid=Z7v8NJDak3uZLM&vet=12ahUKEwj8s6LQ6qKBAxVyuIkEHWaVBq8QMygDegQIARB6..i&imgrefurl=https%3A%2F%2Fwww.cleverfiles.com%2Fhowto%2Fes%2Fwhat-is-jpg.html&docid=QFlun1GxrAfScM&w=630&h=354&q=imagenes%20jpg&ved=2ahUKEwj8s6LQ6qKBAxVyuIkEHWaVBq8QMygDegQIARB6',
+    };
+
+    const apiKey = '86171b12f1316e4cd2725d683eda3336';
+
+    fetch(`https://graph.facebook.com/v12.0/1234567890123456/feed`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(post)
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
+  }
+
 }
