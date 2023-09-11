@@ -70,7 +70,7 @@ export class AppComponent {
   }
 
   compartirEnFacebook() {
-    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(this.url)}`;
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=Holasssss`;
     window.open(facebookShareUrl, '_blank');
   }
 }
