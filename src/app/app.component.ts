@@ -83,7 +83,7 @@ export class AppComponent {
 
     const apiKey = 'EAAUfILDZA1NkBOw5Hsj44vigmCkP1csZBxY9r42zmtfkcbaUxYQMZAbf8HK6znZCwCMydesxrJXZCkDP69ytRhLlHQo0nEZBJKlBZB9qiyuvyAwARrakqEjkuMcRb6bRfBXLXTmGmN9obtXkwjnZCmc0ZBxgTiipNY431qGskRHDPiOaJZBti5U3dQL4s9zhnCtOB75dPDEu0CxCdvnTHXtF3qA5jipIMZD';
 
-    fetch(`https://graph.facebook.com/v12.0/1234567890123456/feed`, {
+    fetch(`https://graph.facebook.com/v12.0/${apiKey}/feed`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
