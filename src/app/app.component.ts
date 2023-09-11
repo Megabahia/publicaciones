@@ -74,7 +74,7 @@ export class AppComponent {
     window.open(facebookShareUrl, '_blank');
   }
 
-  createPost(accessToken: string) {
+  createPost() {
     const post = {
       message: 'Esta es una publicación personalizada en Facebook creada con Angular',
       link: 'https://publicaciones-bigpuntos.netlify.app/',
