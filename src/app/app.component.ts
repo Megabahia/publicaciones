@@ -25,35 +25,38 @@ export class AppComponent {
   ) {
     // Configurar las etiquetas SEO personalizadas para la página de Producto
     this.titleService.setTitle('Producto - Mi Tienda en Línea');
-    this.meta.updateTag({ name: 'description', content: 'Descripción detallada del producto.' });
-    this.meta.updateTag({ name: 'keywords', content: 'producto, descripción, detalles' });
+    this.meta.updateTag({ property: 'og:title', content: 'Título de la vista específica' });
+    this.meta.updateTag({ property: 'og:description', content: 'Descripción de la vista específica' });
+    this.meta.updateTag({ property: 'og:image', content: 'URL de la imagen de la vista específica' });
+    // Actualizar la URL canónica si es necesario
+    this.meta.updateTag({ rel: 'canonical', href: 'URL canónica de la vista específica' });
     this.url = document.location;
     console.log(document.location.href);
   }
 
   ngOnInit() {
     // Obtén los parámetros de consulta
-    this._route.queryParams.subscribe((params) => {
-      const {id} = params;
-      console.log('params', params)
+    // this._route.queryParams.subscribe((params) => {
+    //   const {id} = params;
+    //   console.log('params', params)
 
-      // Verifica si el parámetro1 está presente
-      if (id) {
-        console.log('id', id);
+    //   // Verifica si el parámetro1 está presente
+    //   if (id) {
+    //     console.log('id', id);
 
-        this._publicaciones.obtenerDatos(id).subscribe((data) => {
-          // Maneja los datos recibidos de la API
-          console.log(data);
-          this.title = data.titulo;
-          this.imagen = data.imagen;
-          this.description = data.descripcion;
-          this.titleService.setTitle(this.title);
-          this.meta.updateTag({ name: 'description', content: this.description });
-          this.cambiarFavicon(this.imagen);
-          // La llamada a la API solo se realiza si parametro1 está presente
-        });
-      }
-    });
+    //     this._publicaciones.obtenerDatos(id).subscribe((data) => {
+    //       // Maneja los datos recibidos de la API
+    //       console.log(data);
+    //       this.title = data.titulo;
+    //       this.imagen = data.imagen;
+    //       this.description = data.descripcion;
+    //       this.titleService.setTitle(this.title);
+    //       this.meta.updateTag({ name: 'description', content: this.description });
+    //       this.cambiarFavicon(this.imagen);
+    //       // La llamada a la API solo se realiza si parametro1 está presente
+    //     });
+    //   }
+    // });
   }
 
   cambiarFavicon(nuevaRuta: string) {
@@ -70,7 +73,7 @@ export class AppComponent {
   }
 
   compartirEnFacebook() {
-    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=Holasssss`;
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${this.url}`;
     window.open(facebookShareUrl, '_blank');
   }
 
