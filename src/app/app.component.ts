@@ -10,7 +10,7 @@ import {DOCUMENT} from "@angular/common";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Pagina titulo';
+  //title = 'Pagina titulo';
   imagen = '';
   description = 'publicaciones la descripciones';
   url = '';
@@ -24,7 +24,7 @@ export class AppComponent {
     @Inject(DOCUMENT) document: any
   ) {
     // Configurar las etiquetas SEO personalizadas para la página de Producto
-    this.titleService.setTitle('Producto - Mi Tienda en Línea');
+    //this.titleService.setTitle('Producto - Mi Tienda en Línea');
     this.meta.updateTag({ property: 'og:title', content: 'Título de la vista específica' });
     this.meta.updateTag({ property: 'og:description', content: 'Descripción de la vista específica' });
     this.meta.updateTag({ property: 'og:image', content: 'URL de la imagen de la vista específica' });
