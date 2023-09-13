@@ -1,4 +1,4 @@
-import {Component, Inject, Renderer2} from '@angular/core';
+import {Component, Inject, Renderer2, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {PublicacionesService} from "./publicaciones.service";
 import {Meta, Title} from "@angular/platform-browser";
@@ -9,7 +9,7 @@ import {DOCUMENT} from "@angular/common";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   //title = 'Pagina titulo';
   imagen = '';
   description = 'publicaciones la descripciones';
@@ -23,11 +23,28 @@ export class AppComponent {
     private _publicaciones: PublicacionesService,
     @Inject(DOCUMENT) document: any
   ) {
+    console.log("El valor cambió");
+    
+    this.renderer.setProperty(
+      document.querySelector('meta[property="og:title"]'),
+      'content',
+      'Nuevo TITULO'
+    );
+    this.renderer.setProperty(
+      document.querySelector('meta[property="og:description"]'),
+      'content',
+      'Nueva descripcion'
+    );
+    this.renderer.setProperty(
+      document.querySelector('meta[property="og:image"]'),
+      'content',
+      'https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen.jpg'
+    );
     // Configurar las etiquetas SEO personalizadas para la página de Producto
     //this.titleService.setTitle('Producto - Mi Tienda en Línea');
-    this.meta.updateTag({ property: 'og:title', content: 'Título de la vista específica' });
-    this.meta.updateTag({ property: 'og:description', content: 'Descripción de la vista específica' });
-    this.meta.updateTag({ property: 'og:image', content: 'URL de la imagen de la vista específica' });
+   // this.meta.updateTag({ property: 'og:title', content: 'Título de la vista específica' });
+    //this.meta.updateTag({ property: 'og:description', content: 'Descripción de la vista específica' });
+    //this.meta.updateTag({ property: 'og:image', content: 'URL de la imagen de la vista específica' });
     // Actualizar la URL canónica si es necesario
     this.meta.updateTag({ rel: 'canonical', href: 'URL canónica de la vista específica' });
     this.url = document.location;
